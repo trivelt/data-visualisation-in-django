@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script src="https://cdn.bokeh.org/bokeh/release/bokeh-1.4.0.min.js"></script>
+        <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-1.4.0.min.js"></script>
+        <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-1.4.0.min.js"></script>
+
+        {{ script | safe }}
+        <title>HELLO</title>
+    </head>
+    <body>
+        <form method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type='submit' value='Apply filters'>
+        </form>
+      {{ div | safe }}
+    </body>
+</html>
