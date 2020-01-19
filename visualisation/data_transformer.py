@@ -1,4 +1,7 @@
 from datetime import datetime
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class DataTransformer:
@@ -21,9 +24,7 @@ class DataTransformer:
                 'impressions': impressions
             }
         except Exception as exc:
-            # logger.warning("Ommiting invalid row %s", row)
-            print("Omitting invalid row " + str(self.data))
-            print(exc)
+            logger.warning("Ommiting invalid row %s: %s", self.data, exc)
             self.transformed_valid_data = False
             return None
 
