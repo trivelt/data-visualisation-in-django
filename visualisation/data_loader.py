@@ -1,7 +1,5 @@
 import csv
-from django.db import transaction
 from visualisation.models import Campaign
-
 from visualisation.data_transformer import DataTransformer
 
 

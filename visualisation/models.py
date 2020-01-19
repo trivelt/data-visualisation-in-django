@@ -36,10 +36,8 @@ class Campaign(models.Model):
 
     @staticmethod
     def get_distinct_data_sources():
-        distinct_data_sources = Campaign.objects.all().values_list("data_source").distinct()
-        return [item[0] for item in list(distinct_data_sources)]
+        return list(Campaign.objects.all().values_list("data_source", flat=True).distinct())
 
     @staticmethod
     def get_distinct_campaigns():
-        campaigns_list = Campaign.objects.all().values_list("name").distinct()
-        return [item[0] for item in list(campaigns_list)]
+        return list(Campaign.objects.all().values_list("name", flat=True).distinct())

@@ -6,9 +6,6 @@ from visualisation.plot_generator import PlotGenerator
 
 
 def index(request):
-    # data_loader = DataLoader(csv_file_name='/home/maciej/prog/python/adverity-challenge/DAMKBAoDBwoDBAkOBAYFCw.csv')
-    # data_loader.load()
-
     if request.method == "POST":
         form = DataFilterForm(request.POST)
     else:
