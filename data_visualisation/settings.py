@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 2048
 
+CSV_DATA_FILE = None
 
 # Application definition
 
