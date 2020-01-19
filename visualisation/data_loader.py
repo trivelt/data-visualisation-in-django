@@ -38,7 +38,6 @@ class DataLoader:
         self._add_to_database(data)
 
     def _add_to_database(self, data):
-        # print("Adding new campaign: " + str(data))
         new_campaign = Campaign(
             date=data['date'],
             data_source=data['data_source'],
@@ -46,8 +45,4 @@ class DataLoader:
             clicks=data['clicks'],
             impressions=data['impressions']
         )
-        try:
-            self.to_add.append(new_campaign)
-            # new_campaign.save()
-        except Exception as exc:
-            print("Could not add " + str(data) + ": " + str(exc))
+        self.to_add.append(new_campaign)
