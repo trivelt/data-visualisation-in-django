@@ -4,15 +4,20 @@ from visualisation.models import Campaign
 
 
 class DataFilterForm(forms.Form):
-    distinct_data_sources = Campaign.get_distinct_data_sources()
-    distinct_data_sources = list(enumerate(distinct_data_sources))
+    campaigns = forms.MultipleChoiceField(choices=[], widget=Select2Multiple, required=False)
+    data_sources = forms.MultipleChoiceField(choices=[], required=False)
 
-    campaigns_list = Campaign.get_distinct_campaigns()
-    campaigns_list.insert(0, "All")
-    campaigns_list = [(str(index), item) for index, item in enumerate(campaigns_list)]
+    def __init__(self, *args, **kwargs):
+        forms.Form.__init__(self, *args, **kwargs)
+        self.distinct_data_sources = Campaign.get_distinct_data_sources()
+        self.distinct_data_sources = list(enumerate(self.distinct_data_sources))
 
-    campaigns = forms.MultipleChoiceField(choices=campaigns_list, widget=Select2Multiple, required=False)
-    data_sources = forms.MultipleChoiceField(choices=distinct_data_sources, required=False)
+        self.campaigns_list = Campaign.get_distinct_campaigns()
+        self.campaigns_list.insert(0, "All")
+        self.campaigns_list = [(str(index), item) for index, item in enumerate(self.campaigns_list)]
+
+        self.fields['campaigns'].choices = self.campaigns_list
+        self.fields['data_sources'].choices = self.distinct_data_sources
 
     def selected_campaigns(self):
         if not self.is_valid():
