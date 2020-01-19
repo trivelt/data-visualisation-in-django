@@ -32,3 +32,9 @@ In order to run application, please execute:
 
 Then you can set `CSV_DATA_FILE` as `None` to operate on loaded data and and avoid
 updating them during each launch
+
+### Tests
+Some example unit tests are attached in the project. You can run them by 
+executing the following command:
+
+    python3 manage.py test
