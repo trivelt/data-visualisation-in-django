@@ -4,15 +4,21 @@
         <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-1.4.0.min.js"></script>
         <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-1.4.0.min.js"></script>
 
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/visualisation.css' %}">
+
         {{ script | safe }}
-        <title>HELLO</title>
+        <title>Campaigns Data Visualisation</title>
     </head>
     <body>
-        <form method='post'>
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type='submit' value='Apply filters'>
-        </form>
+        <div class="header-div">
+            <h2>Campaigns Data Visualisation</h2>
+            <form method='post'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type='submit' value='Apply filters'>
+            </form>
+        </div>
       {{ div | safe }}
     </body>
 </html>
